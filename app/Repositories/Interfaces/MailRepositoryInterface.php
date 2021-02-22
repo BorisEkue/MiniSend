@@ -10,5 +10,7 @@ interface MailRepositoryInterface {
      public function findMailById($idMail);
 
      public function findMailByCustomer($emailCustomer,  $offset, $size);
+
+     public function search($query);
     
 }

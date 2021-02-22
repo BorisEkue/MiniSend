@@ -26,6 +26,7 @@ Route::get('v1/customers/{idCustomer}', [CustomerController::class, 'findCustome
 
 
 Route::post('v1/emails/', [MailController::class, 'sendMail']);
+Route::get('v1/emails/search', [MailController::class, 'search']);
 Route::get('v1/emails/{idMail}', [MailController::class, 'findMailById']);
 Route::get('v1/emails/by/customer', [MailController::class, 'findMailByCustomer']);
-Route::get('v1/emails/search', [MailController::class, 'search']);
+

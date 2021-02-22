@@ -94,7 +94,18 @@ class MailController extends Controller
     }
 
     public function search(Request $request) {
-        
+        $query = array();
+        if(!empty($request->get("from")))
+            $query[] = array("from", "like", "%" .$request->get("from") . "%");
+
+        if(!empty($request->get("to")))
+            $query[] = array("to", "like", "%" .$request->get("to") . "%");
+
+        if(!empty($request->get("subject")))
+            $query[] = array("subject", "like", "%" .$request->get("subject") . "%");
+
+        $mails = $this->mailServiceInterface->search($query);
+        return !is_null($mails) ? APIResponse::response($request, 'data', $mails, 200) : APIResponse::error($request, "Empty result", 404);
     }
 
    
