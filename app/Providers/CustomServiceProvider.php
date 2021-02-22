@@ -8,6 +8,8 @@ use App\Services\MailService;
 use App\Services\Interfaces\MailServiceInterface;
 use App\Repositories\Interfaces\CustomerRepositoryInterface;
 use App\Repositories\CustomerRepository;
+use App\Repositories\Interfaces\MailRepositoryInterface;
+use App\Repositories\MailRepository;
 use Illuminate\Support\ServiceProvider;
 
 class CustomServiceProvider extends ServiceProvider
@@ -21,7 +23,7 @@ class CustomServiceProvider extends ServiceProvider
     {   
         // Repositories
         $this->app->bind(CustomerRepositoryInterface::class, CustomerRepository::class);
-        
+        $this->app->bind(MailRepositoryInterface::class, MailRepository::class);
         
 
         // Services

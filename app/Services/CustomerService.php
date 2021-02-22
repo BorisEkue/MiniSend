@@ -43,7 +43,7 @@ class CustomerService implements CustomerServiceInterface {
     public function generateToken() {
         return [
             'access_token' => bin2hex(random_bytes(16)),
-            'expires_at' => date('Y-m-d H:i:s', strtotime('+1 dat', time())),
+            'expires_at' => date('Y-m-d H:i:s', strtotime('+1 day', time())),
             'token_type' => 'bearer'
         ];
     }
@@ -59,6 +59,10 @@ class CustomerService implements CustomerServiceInterface {
         
         return $token->save();
          
+    }
+
+    public function findCustomerById( $idCustomer) {
+        return $this->customerRepositoryIterface->findCustomerById($idCustomer);
     }
 
     

@@ -7,9 +7,6 @@ interface CustomerRepositoryInterface {
 
      public function findByEmailPassword(array $credentials);
 
-    // public function create(array $user_data);
-    
-    // public function findAll();
+     public function findCustomerById( $idCustomer);
 
-    // public function find($id);
 }

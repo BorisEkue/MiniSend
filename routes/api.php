@@ -21,7 +21,11 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 
-//Route::post('v1/customers/login', 'CustomerController@login');
 Route::post('v1/customers/login', [CustomerController::class, 'login']);
+Route::get('v1/customers/{idCustomer}', [CustomerController::class, 'findCustomerById']);
+
+
 Route::post('v1/emails/', [MailController::class, 'sendMail']);
-Route::get('v1/emails/ok', [MailController::class, 'ok']);
+Route::get('v1/emails/{idMail}', [MailController::class, 'findMailById']);
+Route::get('v1/emails/by/customer', [MailController::class, 'findMailByCustomer']);
+Route::get('v1/emails/search', [MailController::class, 'search']);

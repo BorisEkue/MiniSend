@@ -14,4 +14,9 @@ class CustomerRepository implements CustomerRepositoryInterface {
         
         return $customer;
     }
+
+    public function findCustomerById( $idCustomer) {
+        return Customer::where(["id" => $idCustomer])
+                        ->first();
+    }
 }

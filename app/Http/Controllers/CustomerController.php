@@ -20,7 +20,7 @@ class CustomerController extends Controller
 
 
     public function login(Request $request) {
-
+        
         $data = $request->input();       
 
         if(!isset($data['email']) || $data['email'] == '')
@@ -36,11 +36,8 @@ class CustomerController extends Controller
       
     }
 
-    // private UserService $userService;
-
-    // public function __construct(UserService $userService)
-    // {
-    //     $this->middleware('basicAuth')->except('signup', 'login');
-    //     $this->userService = $userService;
-    // }
+    public function findCustomerById(Request $request, $idCustomer) {
+        $customer = $this->customerService->findCustomerById($idCustomer);
+        return !is_null($customer) ? APIResponse::response($request, 'data', $customer, 200) : APIResponse::error($request, "Cusotmer not found.", 404);
+    }
 }
