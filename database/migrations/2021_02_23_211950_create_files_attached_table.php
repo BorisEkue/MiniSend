@@ -14,7 +14,7 @@ class CreateFilesAttachedTable extends Migration
     public function up()
     {
         Schema::create('files_attached', function (Blueprint $table) {
-            $table->id();
+            $table->string('id')->unique();
             $table->string('idfile');
             $table->string('filename');
             $table->string('filepath');

@@ -27,8 +27,10 @@ class CreateCustomersTable extends Migration
             array(
                 'firstname' => 'Boris',
                 'lastname' => 'EKUE-HETTAH',
-                'email' => 'kueviboris@gmail.com',
-                'password' => 'admin'
+                'email' => 'admin@gmail.com',
+                'password' => 'admin',
+                'created_at' => time(),
+                'updated_at' => time()
             )
         );
     }

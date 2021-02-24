@@ -14,7 +14,7 @@ class CreateEmailsTable extends Migration
     public function up()
     {
         Schema::create('emails', function (Blueprint $table) {
-            $table->id();
+            $table->string('id');
             $table->string('idmail');
             $table->string('from');
             $table->string('to');
