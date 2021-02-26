@@ -53,7 +53,7 @@ The REST API calls are documented at this address [https://documenter.getpostman
 
 #### API calls response description
 A successfull request's response body will have a **status**, an **URI** and a **data** properties. **data** property contains the request payload.
-Example the request [GET {{BASE_URL}}/v1/emails/m_6032f3f3dcbbd](GET {{BASE_URL}}/v1/emails/m_6032f3f3dcbbd) to retrieve a mail's details will output
+Example the request **GET {{BASE_URL}}/v1/emails/m_6032f3f3dcbbd** to retrieve a mail's details will output
 ```
     {
   "status": 200,
