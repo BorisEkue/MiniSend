@@ -11,5 +11,7 @@ interface MailServiceInterface {
 
     public function findMailByCustomer($emailCustomer, $offset = 0, $size = 10);
 
+    public function findMailToCustomer($emailCustomer, $offset = 0, $size = 10);
+
     public function search($query);
 }

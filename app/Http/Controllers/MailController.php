@@ -17,6 +17,7 @@ class MailController extends Controller
     
     public function __construct(CustomerServiceInterface $customerServiceInterface, MailServiceInterface $mailServiceInterface)
     {
+        //$this->middleware('preFlight');
         $this->middleware('basicAuth');
         $this->customerServiceInterface = $customerServiceInterface;
         $this->mailServiceInterface = $mailServiceInterface;
@@ -62,7 +63,7 @@ class MailController extends Controller
                 $filesAttached[] = array(
                     "id" => uniqid("f_"),
                     "fileName" => $fileNameOnDisk,
-                    "filePath" => $filesLocation . $fileNameOnDisk,
+                    "filePath" => url('/files/' . $fileNameOnDisk)  ,
                     "fileExtension" => $fileExtension,
                     "idEmail" => $mailId
                 );
@@ -89,6 +90,16 @@ class MailController extends Controller
         
 
         $mails = $this->mailServiceInterface->findMailByCustomer($request->get("email"));
+        
+        return !is_null($mails) ? APIResponse::response($request, 'data', $mails, 200) : APIResponse::error($request, "Empty result", 404);
+    }
+
+    public function findMailToCustomer(Request $request) {
+        $offset = !empty($request->get("offset")) ? $request->get("offset") : 0;
+        $size = !empty($request->get("size")) ? $request->get("size") : 10;
+        
+
+        $mails = $this->mailServiceInterface->findMailToCustomer($request->get("email"));
         
         return !is_null($mails) ? APIResponse::response($request, 'data', $mails, 200) : APIResponse::error($request, "Empty result", 404);
     }

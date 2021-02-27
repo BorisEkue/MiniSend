@@ -25,6 +25,22 @@ class CreateEmailsTable extends Migration
             $table->string('has_files');
             $table->timestamps();
         });
+
+        DB::table('emails')->insert(
+            array(
+                'id' => 'm_100873acb07f0b31',
+                'idmail' => 'm_100873acb07f0b31',
+                'from' => 'alice@gmail.com',
+                'to' => 'admin@gmail.com',
+                'cc' => '',
+                'subject' => 'Hello from Alice',
+                'content' => 'Hello from Alice',
+                'content_type' => 'html',
+                'has_files' => 0,
+                'created_at' => time(),
+                'updated_at' => time(),
+            )
+        );
     }
 
     /**

@@ -59,8 +59,13 @@ class MailRepository implements MailRepositoryInterface {
     }
 
     public function findMailByCustomer($emailCustomer, $offset, $size) {
-        return Email::Where('from', $emailCustomer)->skip($offset)->take($size)->get();         
+        return Email::Where('from', $emailCustomer)->orderBy('created_at', 'DESC')->skip($offset)->take($size)->get();         
     }
+
+    public function findMailToCustomer($emailCustomer, $offset, $size) {
+        return Email::Where('to', $emailCustomer)->orderBy('created_at', 'DESC')->skip($offset)->take($size)->get();         
+    }
+
 
     public function search($query) {
         return Email::Where($query)->get();

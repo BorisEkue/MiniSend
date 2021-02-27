@@ -39,6 +39,11 @@ class MailService implements MailServiceInterface {
         return $this->mailRepositoryInterface->findMailByCustomer($emailCustomer, $offset, $size);
     }
 
+    public function findMailToCustomer($emailCustomer, $offset = 0, $size = 10) {
+        
+        return $this->mailRepositoryInterface->findMailToCustomer($emailCustomer, $offset, $size);
+    }
+
     public function search($query) {
         return $this->mailRepositoryInterface->search($query);
     }

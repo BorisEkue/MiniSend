@@ -14,7 +14,8 @@ class CustomerController extends Controller
 
     public function __construct(CustomerServiceInterface $customerService)
     {
-        $this->middleware('basicAuth')->except('login');
+       // $this->middleware('preFlight');
+        $this->middleware('basicAuth')->except('login'); 
         $this->customerService = $customerService;
     }
 
@@ -22,7 +23,8 @@ class CustomerController extends Controller
     public function login(Request $request) {
         
         $data = $request->input();       
-
+        
+        
         if(!isset($data['email']) || $data['email'] == '')
             return APIResponse::error($request, "'login' can't be empty", Response::HTTP_UNAUTHORIZED);
 
@@ -31,6 +33,8 @@ class CustomerController extends Controller
                 
 
         $auth = $this->customerService->login(["email" => $data["email"], "password" => $data["password"]]);
+
+       // $auth = $this->customerService->login(["email" => $data["email"], "password" => "admin" ]);
 
         return !is_null($auth) ? APIResponse::response($request, 'auth', $auth, 200) : APIResponse::error($request, "Invalid credentials. Cusotmer does not exist.", 404);
       
