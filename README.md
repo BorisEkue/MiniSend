@@ -37,10 +37,11 @@ and insert some testing data.
 ## Run the project
 To run the project, simple type the command
 ```
-    > php artisan serve
+    > php artisan serve --host {HOSTNAME} --port {PORT}
 ```
 
-By default the project will run on http://127.0.0.1:8000
+By default the project will run on http://127.0.0.1:8000 without **--host** and **--port** arguments.
+
 
 ## Run feature tests
 To run feature tests, type this command in the root folder
@@ -73,7 +74,7 @@ Example the request **GET {{BASE_URL}}/v1/emails/m_6032f3f3dcbbd** to retrieve a
       {
         "idfile": "f_6032f3f3de088",
         "filename": "file_6032f3f3dd24a.PNG",
-        "filepath": "..\\public\\files\\file_6032f3f3dd24a.PNG",
+        "filepath": "http://localhost:8000/files/file_6032f3f3dd24a.PNG",
         "fileExtension": "PNG",
         "email_id": "m_6032f3f3dcbbd",
         "created_at": "2021-02-21T23:59:48.000000Z",
@@ -82,7 +83,7 @@ Example the request **GET {{BASE_URL}}/v1/emails/m_6032f3f3dcbbd** to retrieve a
       {
         "idfile": "f_6032f3f3deb34",
         "filename": "file_6032f3f3de0a1.PNG",
-        "filepath": "..\\public\\files\\file_6032f3f3de0a1.PNG",
+        "filepath": "http://localhost:8000/files/file_6032f3f3de0a1.PNG",
         "fileExtension": "PNG",
         "email_id": "m_6032f3f3dcbbd",
         "created_at": "2021-02-21T23:59:48.000000Z",
