@@ -12,8 +12,5 @@ class Asset
     public static function get_files_location() {
         return (env("APP_ENV") == "local") ? "..\\public\\files\\" : "..\\public\\files\\";
     }
-
-
-
-   
+  
 }

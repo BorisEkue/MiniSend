@@ -7,7 +7,6 @@ use App\Models\Email;
 use App\Models\FileAttached;
 
 
-
 class MailRepository implements MailRepositoryInterface {
 
     public function saveMail(array $emailData) {   
@@ -48,9 +47,7 @@ class MailRepository implements MailRepositoryInterface {
         $email->save();
         
         $email->filesAttached = $files;
-
-        
-        
+                
         return $email;
     }
 
@@ -65,7 +62,6 @@ class MailRepository implements MailRepositoryInterface {
     public function findMailToCustomer($emailCustomer, $offset, $size) {
         return Email::Where('to', $emailCustomer)->orderBy('created_at', 'DESC')->skip($offset)->take($size)->get();         
     }
-
 
     public function search($query) {
         return Email::Where($query)->get();

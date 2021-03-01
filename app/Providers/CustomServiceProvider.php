@@ -12,6 +12,9 @@ use App\Repositories\Interfaces\MailRepositoryInterface;
 use App\Repositories\MailRepository;
 use Illuminate\Support\ServiceProvider;
 
+/**
+ * Injected class in constructors
+ */
 class CustomServiceProvider extends ServiceProvider
 {
     /**

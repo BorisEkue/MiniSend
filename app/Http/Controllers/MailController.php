@@ -16,8 +16,7 @@ class MailController extends Controller
     private MailServiceInterface $mailServiceInterface;
     
     public function __construct(CustomerServiceInterface $customerServiceInterface, MailServiceInterface $mailServiceInterface)
-    {
-        //$this->middleware('preFlight');
+    {        
         $this->middleware('basicAuth');
         $this->customerServiceInterface = $customerServiceInterface;
         $this->mailServiceInterface = $mailServiceInterface;
@@ -105,6 +104,7 @@ class MailController extends Controller
     }
 
     public function search(Request $request) {
+
         $query = array();
         if(!empty($request->get("from")))
             $query[] = array("from", "like", "%" .$request->get("from") . "%");
@@ -116,12 +116,7 @@ class MailController extends Controller
             $query[] = array("subject", "like", "%" .$request->get("subject") . "%");
 
         $mails = $this->mailServiceInterface->search($query);
+        
         return !is_null($mails) ? APIResponse::response($request, 'data', $mails, 200) : APIResponse::error($request, "Empty result", 404);
     }
-
-   
-
-
-    
-    
 }
